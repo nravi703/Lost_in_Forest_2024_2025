@@ -1,0 +1,128 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lost in the Forest</title>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="game.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a-scene fog="type: exponential; color: #777; density: 0.08" shadow="type: basic">
+    <!-- Ambient Sounds -->
+    <a-sound id="ambientMain" src="url(ambient_sound.mp3)" autoplay="true" loop="true" volume="0.4" positional="false"></a-sound>
+    <a-sound id="windSound" src="url(wind.mp3)" loop="true" volume="0.25" positional="true"></a-sound>
+    <a-sound id="creakSound" src="url(creak.mp3)" loop="true" volume="0.2" positional="true"></a-sound>
+    <a-sound id="footstepSound" src="url(footstep.mp3)" loop="true" volume="0.15" positional="true"></a-sound>
+
+    <a-entity id="monsterDog" position="5 0 -15" visible="true" scale="1.2 1.2 1.2">
+     <!-- Body -->
+     <a-box position="0 0.4 0" depth="1.4" height="0.8" width="2.2" color="#3b2f2f" roughness="0.7"></a-box>
+  
+     <!-- Head -->
+     <a-box position="0 0.8 0.8" depth="0.6" height="0.6" width="1" color="#3b2f2f"></a-box>
+
+     <!-- Glowing Eyes -->
+     <a-sphere position="0.3 0.9 1" radius="0.12" color="#ff0000" emissive="#ff0000"></a-sphere>
+    <a-sphere position="-0.3 0.9 1" radius="0.12" color="#ff0000" emissive="#ff0000"></a-sphere>
+
+     <!-- Sharp Teeth -->
+     <a-cone position="0.2 0.7 1.1" radius-bottom="0.05" height="0.1" color="white" rotation="0 0 0"></a-cone>
+     <a-cone position="-0.2 0.7 1.1" radius-bottom="0.05" height="0.1" color="white" rotation="0 0 0"></a-cone>
+
+     <!-- Legs / Claws -->
+    <a-box position="0.7 0.1 0.3" height="0.2" width="0.2" depth="0.6" color="black"></a-box>
+    <a-box position="-0.7 0.1 0.3" height="0.2" width="0.2" depth="0.6" color="black"></a-box>
+    <a-box position="0.7 0.1 -0.3" height="0.2" width="0.2" depth="0.6" color="black"></a-box>
+    <a-box position="-0.7 0.1 -0.3" height="0.2" width="0.2" depth="0.6" color="black"></a-box>
+
+    <!-- Tail -->
+    <a-cylinder position="0 -0.1 -1" height="0.5" radius="0.05" rotation="90 0 0" color="#2b1f1f"></a-cylinder>
+
+    <!-- Sound -->
+    <a-sound id="monsterGrowl" src="url(monsterDogGrowl.mp3)" autoplay="false" volume="1.2" positional="true"></a-sound>
+  </a-entity>
+
+    <!-- Sky -->
+    <a-sky color="#999999"></a-sky>
+
+    <!-- Ground and Environment -->
+    <a-plane position="0 0 0" rotation="-90 0 0" width="300" height="300" color="#4e5d3c" shadow repeat="100 100"></a-plane>
+    <a-plane position="15 0.2 -10" rotation="-90 0 0" width="30" height="30" color="#4b5d39"></a-plane>
+    <a-plane position="-20 0.5 15" rotation="-90 0 0" width="20" height="20" color="#415432"></a-plane>
+    <a-plane position="0 0 0" rotation="-90 0 0" width="300" height="300" color="#4e5d3c" shadow="receive: true" repeat="100 100"></a-plane>
+
+    <!-- Trees and Nature -->
+    <a-entity position="10 3 -8">
+      <a-cylinder radius="0.6" height="5" color="#8B4513"></a-cylinder>
+      <a-cone position="0 2.5 0" radius-bottom="3.5" height="5" color="#2e8b57"></a-cone>
+    </a-entity>
+    <a-entity position="-12 2.8 -15">
+      <a-cylinder radius="0.7" height="4.5" color="#8B4513"></a-cylinder>
+      <a-sphere position="0 3 0" radius="2.5" color="#228B22"></a-sphere>
+    </a-entity>
+    <a-entity position="6 3 12">
+      <a-cylinder radius="0.5" height="4" color="#8B4513"></a-cylinder>
+      <a-cone position="0 2.2 0" radius-bottom="3" height="4" color="#2e8b57"></a-cone>
+    </a-entity>
+    <a-entity position="-5 2.5 10">
+      <a-cylinder radius="0.6" height="4.5" color="#8B4513"></a-cylinder>
+      <a-sphere position="0 2.5 0" radius="2" color="#3cb371"></a-sphere>
+    </a-entity>
+
+    <!-- Bushes & Rocks -->
+    <a-sphere position="3 0.3 -6" radius="1" color="#2f5e3a"></a-sphere>
+    <a-sphere position="-6 0.3 3" radius="0.8" color="#3b734d"></a-sphere>
+    <a-sphere position="8 0.1 -3" radius="0.5" color="#696969"></a-sphere>
+    <a-box position="-3 0.1 6" depth="1" height="0.3" width="1.5" color="#505050"></a-box>
+
+    <!-- Mountains -->
+    <a-entity position="25 5 -30">
+      <a-cone radius-bottom="6" height="10" color="#6B8E23"></a-cone>
+    </a-entity>
+    <a-entity position="-10 5 -50">
+      <a-cone radius-bottom="8" height="12" color="#8B4513"></a-cone>
+    </a-entity>
+    <a-entity position="35 7 -70">
+      <a-cone radius-bottom="7" height="15" color="#A52A2A"></a-cone>
+    </a-entity>
+    <a-entity position="-30 6 -90">
+      <a-cone radius-bottom="5" height="14" color="#2F4F4F"></a-cone>
+    </a-entity>
+    <a-entity position="50 8 -110">
+      <a-cone radius-bottom="10" height="18" color="#556B2F"></a-cone>
+    </a-entity>
+
+    <!-- Lanterns (Objectives) -->
+    <a-box position="0 0.3 -10" color="yellow" id="lantern1" depth="0.5" height="0.5" width="0.5" shadow></a-box>
+    <a-box position="5 0.3 -15" color="yellow" id="lantern2" depth="0.5" height="0.5" width="0.5" shadow></a-box>
+    <a-box position="-10 0.3 5" color="yellow" id="lantern3" depth="0.5" height="0.5" width="0.5" shadow></a-box>
+    <a-box position="3 0.3 7" color="yellow" id="lantern4" depth="0.5" height="0.5" width="0.5" shadow></a-box>
+    <a-box position="-5 0.3 -3" color="yellow" id="lantern5" depth="0.5" height="0.5" width="0.5" shadow></a-box>
+    <a-box position="12 0.3 -8" color="yellow" id="lantern6" depth="0.5" height="0.5" width="0.5" shadow></a-box>
+    <a-box position="-8 0.3 12" color="yellow" id="lantern7" depth="0.5" height="0.5" width="0.5" shadow></a-box>
+    <a-box position="0 0.3 15" color="yellow" id="lantern8" depth="0.5" height="0.5" width="0.5" shadow></a-box>
+
+
+    <!-- Traps -->
+    <a-box position="2 0.1 -5" color="red" id="trap1" depth="1" height="0.2" width="1" class="trap" shadow></a-box>
+    <a-box position="-4 0.1 8" color="red" id="trap2" depth="1" height="0.2" width="1" class="trap" shadow></a-box>
+    <a-box position="7 0.1 -12" color="red" id="trap3" depth="1" height="0.2" width="1" class="trap" shadow></a-box>
+
+    <!-- Player -->
+    <a-entity id="player" camera look-controls wasd-controls="acceleration: 150" position="0 1.6 0"></a-entity>
+
+    <!-- Lighting -->
+    <a-light id="mainLight" type="directional" position="0 10 -10" intensity="0.8" castShadow="true"></a-light>
+    <a-light type="ambient" color="#555"></a-light>
+  </a-scene>
+
+  <!-- UI -->
+  <div id="message">Find and collect the lanterns to survive the forest.</div>
+  <div id="journal"><strong>Journal:</strong> <span id="journalEntry">Your journey begins...</span></div>
+  <div id="inventory">Inventory: None</div>
+  <div id="life">Life: 100</div>
+  <div id="winMessage" class="hidden">🎉 You Win! 🎉</div>
+</body>
+</html>
